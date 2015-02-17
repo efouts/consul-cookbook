@@ -28,6 +28,11 @@ libarchive_file 'consul_ui.zip' do
   action :extract
 end
 
+directory node['consul']['data_dir'] do
+  recursive true
+  action :create
+end
+
 # JW TODO: Remove after next major release.
 file Chef::ConsulUI.active_path(node) do
   action :delete
